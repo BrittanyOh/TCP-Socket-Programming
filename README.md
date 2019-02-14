@@ -17,10 +17,10 @@ of the above requirements are not met. Plagiarism will always lead to zero credi
 assignment and potentially for the whole course. No credits will be given if the repo is
 modified after the deadline. Other than that, the points will be given based on the correctness.
 
-### In this project, you will develop two network programs in the C/C++ one for client and one for
+<p> In this project, you will develop two network programs in the C/C++ one for client and one for
 server. You may base your program on the echo examples,
 The client program reads input from user and performs the following actions repeatedly until
-directed to exit:
+directed to exit:</p>
 
 <br> • If the user enters 's', it will ask user to enter a string. It then sends "CAP\nxxx\n" to the server
 (where "xxx" is the string entered by the user, which could input any character except "\n"),
