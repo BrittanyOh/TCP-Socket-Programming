@@ -1,6 +1,6 @@
 # TCP-Socket-Programming
-## CSCI 452/553: Network and Web Programming
-## TCP Socket Programming Project
+### CSCI 452/553: Network and Web Programming
+### TCP Socket Programming Project
 
 <br> • All development must be done with Github. Specifically, there must be at least one commit
 for every five (or fewer) lines of code (excluding empty lines and lines with only comment).
@@ -11,16 +11,17 @@ repo must remain private before the deadline and public after the deadline.
 http://hucs.dynu.net/lij/courses/submit_hw.html
 The text file should include only the URL of your Github repo.
 
-## Grading
+### Grading
 <br> • All or significant portion of the points will be deducted at the discretion of the instructor if any
 of the above requirements are not met. Plagiarism will always lead to zero credit for this
 assignment and potentially for the whole course. No credits will be given if the repo is
 modified after the deadline. Other than that, the points will be given based on the correctness.
 
-<p> In this project, you will develop two network programs in the C/C++ one for client and one for
+___________________________________________________________________________________________________________
+In this project, you will develop two network programs in the C/C++ one for client and one for
 server. You may base your program on the echo examples,
 The client program reads input from user and performs the following actions repeatedly until
-directed to exit:</p>
+directed to exit:
 
 <br> • If the user enters 's', it will ask user to enter a string. It then sends "CAP\nxxx\n" to the server
 (where "xxx" is the string entered by the user, which could input any character except "\n"),
