@@ -17,7 +17,7 @@ of the above requirements are not met. Plagiarism will always lead to zero credi
 assignment and potentially for the whole course. No credits will be given if the repo is
 modified after the deadline. Other than that, the points will be given based on the correctness.
 
-<br> In this project, you will develop two network programs in the C/C++ one for client and one for
+### In this project, you will develop two network programs in the C/C++ one for client and one for
 server. You may base your program on the echo examples,
 The client program reads input from user and performs the following actions repeatedly until
 directed to exit:
@@ -47,7 +47,7 @@ the file may contain binary data such as images. If no file of the name "xxx" ex
 "###\nNOT FOUND" back to the client, where "###" is the number of characters in the string
 of "NOT FOUND".
 
-<br> • (For graduate students only) The server must support multiple connections with the client
+<br> ***(For graduate students only) The server must support multiple connections with the client
 simultaneously.
 The client should be invoked by the following command:
 <client> <server IP> <server port>
@@ -56,4 +56,4 @@ of the server, <server port> is the TCP port of the server.
 The server should be invoked by the following command:
 <server> <port>
 Where <server> is the name of the server executable file name, <port> is the port the server
-listens to.
+listens to. ***
