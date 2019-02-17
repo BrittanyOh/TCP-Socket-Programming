@@ -16,7 +16,9 @@ int main(){
 
   int list_s;
   int conn_s;
+  int cli_length;
   struct sockaddr_in servaddr;
+  struct sockaddr_in cli_addr;
   char buffer[MAX_LINE];
 
   // create and check listening Socket
@@ -55,7 +57,8 @@ int main(){
       // infinite loop to response to client requests
       while (1){
         // wait and accept connection
-        conn_s = accept(list_s, NULL, NULL);
+        cli_length = sizeof(cli_addr);
+        conn_s = accept(list_s,(struct sockaddr *) &cli_addr, &cli_length);
         if( conn_s < 0){
           fprintf(stderr, "ECHOSERV: Error calling accept() \n");
           exit(EXIT_FAILURE);
