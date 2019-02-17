@@ -39,4 +39,12 @@ int main(){
     }
     else
       printf("Socket was successfully binded! \n");
+
+    //prepare server to listen
+    if( listen(list_s, LISTENQ) < 0){
+      fprintf(stderr, "ECHOSERV: Error calling listen() \n");
+      exit(EXIT_FAILURE);
+    }
+    else
+      printf("Server is listening...");
 }
