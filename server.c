@@ -12,6 +12,8 @@
 #define LISTENQ 1024
 
 int main(){
+  /* SETTING UP */
+
   int list_s;
   int conn_s;
   struct sockaddr_in servaddr;
@@ -46,5 +48,19 @@ int main(){
       exit(EXIT_FAILURE);
     }
     else
-      printf("Server is listening...");
+      printf("Server is listening...\n");
+
+      /* LISTENING */
+
+      // infinite loop to response to client requests
+      while (1){
+        // wait and accept connection
+        conn_s = accept(list_s, NULL, NULL);
+        if( conn_s < 0){
+          fprintf(stderr, "ECHOSERV: Error calling accept() \n");
+          exit(EXIT_FAILURE);
+        }
+        else
+          printf("Server accept successful");
+      }
 }
