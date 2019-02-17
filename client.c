@@ -12,10 +12,14 @@
 #define LISTENQ 1024
 
 int main(){
+  /* SETTING UP */
+
   int list_s;
   int conn_s;
   struct sockaddr_in servaddr;
   struct sockaddr_in cli_addr;
+  char buffer[MAX_LINE];
+  int n;
 
   // create and check listening Socket
   list_s = socket(AF_INET, SOCK_STREAM, 0);
@@ -39,4 +43,16 @@ int main(){
     }
     else
       printf("Connected to server... \n");
+
+      /* CONNECTED */
+
+      while (1){
+        memset(buffer, 0, sizeof(buffer));
+        printf("Enter a string: ");
+        n = 0;
+        while ((buffer[n++] = getchar()) != '\n')
+            ;
+        write(list_s, buffer, sizeof(buffer));
+      }
+
 }

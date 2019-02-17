@@ -55,7 +55,8 @@ int main(){
       /* LISTENING */
 
       // infinite loop to response to client requests
-      while (1){
+
+      while (1) {
         // wait and accept connection
         cli_length = sizeof(cli_addr);
         conn_s = accept(list_s,(struct sockaddr *) &cli_addr, &cli_length);
@@ -65,5 +66,10 @@ int main(){
         }
         else
           printf("Server accept successful");
+
+          memset(buffer, 0, MAX_LINE);
+          read(conn_s, buffer, sizeof(buffer));
+          printf("From client: %s", buffer);
+          memset(buffer, 0, MAX_LINE);
       }
 }
