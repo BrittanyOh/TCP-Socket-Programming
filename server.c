@@ -20,9 +20,15 @@ int main(){
   // create and check listening Socket
   list_s = socket(AF_INET, SOCK_STREAM, 0);
   if(list_s < 0){
-    printf("Failure with socket creation \n");
-    exit(0);
+    printf("Error creating listening socket \n");
+    exit(EXIT_FAILURE);
   }
   else
     printf("Succesful socket creation \n");
+
+    //set byes in socket address to 0, assign IP and PORT
+    memset(&servaddr, 0, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    servaddr.sin_port = htons(PORT);
 }
