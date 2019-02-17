@@ -15,4 +15,13 @@ int main(){
   int list_s;
   int conn_s;
   struct sockaddr_in servaddr;
+
+  // create and check listening Socket
+  list_s = socket(AF_INET, SOCK_STREAM, 0);
+  if(list_s < 0){
+    fprintf(stderr, "ECHOSERV: Error creating listening socket\n");
+    exit(EXIT_FAILURE);
+  }
+  else
+    printf("Socket was successfully created! \n");
 }
