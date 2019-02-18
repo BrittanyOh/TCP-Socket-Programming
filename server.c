@@ -20,6 +20,7 @@ int main(){
   struct sockaddr_in servaddr;
   struct sockaddr_in cli_addr;
   char buffer[MAX_LINE];
+  char temp_buffer[MAX_LINE];
 
   // create and check listening Socket
   list_s = socket(AF_INET, SOCK_STREAM, 0);
@@ -69,11 +70,17 @@ int main(){
 
           memset(buffer, 0, MAX_LINE);
           read(conn_s, buffer, sizeof(buffer));
+
+          // capitalized
+          memcpy(temp_buffer, buffer, 3 * sizeof(char));
+          if( strstr(temp_buffer, "CAP") != NULL){ //check if firsrt 3 chars include CAP
+            printf("%s", buffer);
+            memset(buffer, 0, MAX_LINE);
+          }
+          //quit program
           if( *buffer == 'q'){
             break;
           }
-          printf("CAP\n%s\n", buffer);
-          memset(buffer, 0, MAX_LINE);
       }
 
       close(list_s);

@@ -19,6 +19,7 @@ int main(){
   struct sockaddr_in servaddr;
   struct sockaddr_in cli_addr;
   char buffer[MAX_LINE];
+  char temp_buffer[MAX_LINE] = "CAP\\n";
   int n;
 
   // create and check listening Socket
@@ -52,13 +53,23 @@ int main(){
         n = 0;
         while ((buffer[n++] = getchar()) != '\n')
             ;
+
+        /* CAP\nxxx\n */
         if( *buffer =='s'){
           memset(buffer, 0, sizeof(buffer));
           printf("Enter a string:");
           n = 0;
           while ((buffer[n++] = getchar()) != '\n')
               ;
-          write(list_s, buffer, sizeof(buffer));
+          strcat(temp_buffer, buffer);
+          printf("Sending server: %s... \n", temp_buffer);
+          write(list_s, temp_buffer, sizeof(buffer));
+        }
+
+        /* FILE\nxxx\n */
+        if( *buffer == 'f'){
+          memset(buffer, 0, sizeof(buffer));
+          printf("Enter a string:");
         }
 
         //exit chat
