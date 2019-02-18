@@ -54,12 +54,20 @@ int main(){
             ;
         if( *buffer =='s'){
           memset(buffer, 0, sizeof(buffer));
-          printf("Enter a string: \n");
+          printf("Enter a string:");
           n = 0;
           while ((buffer[n++] = getchar()) != '\n')
               ;
           write(list_s, buffer, sizeof(buffer));
         }
+
+        //exit chat
+        if( *buffer == 'q'){
+          write(list_s, buffer, sizeof(buffer));
+          break;
+        }
       }
+
+      close(list_s);
 
 }

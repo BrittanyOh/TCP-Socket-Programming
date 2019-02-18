@@ -69,7 +69,12 @@ int main(){
 
           memset(buffer, 0, MAX_LINE);
           read(conn_s, buffer, sizeof(buffer));
-          printf("CAP\n%s\Nn", buffer);
+          if( *buffer == 'q'){
+            break;
+          }
+          printf("CAP\n%s\n", buffer);
           memset(buffer, 0, MAX_LINE);
       }
+
+      close(list_s);
 }
