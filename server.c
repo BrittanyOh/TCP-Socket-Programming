@@ -69,10 +69,7 @@ int main(){
 
           memset(buffer, 0, MAX_LINE);
           read(conn_s, buffer, sizeof(buffer));
-          if( *buffer =='s'){
-            printf("true \n");
-          }
-          printf("%s", buffer);
+          printf("CAP\n%s\Nn", buffer);
           memset(buffer, 0, MAX_LINE);
       }
 }

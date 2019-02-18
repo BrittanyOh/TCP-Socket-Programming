@@ -52,7 +52,14 @@ int main(){
         n = 0;
         while ((buffer[n++] = getchar()) != '\n')
             ;
-        write(list_s, buffer, sizeof(buffer));
+        if( *buffer =='s'){
+          memset(buffer, 0, sizeof(buffer));
+          printf("Enter a string: \n");
+          n = 0;
+          while ((buffer[n++] = getchar()) != '\n')
+              ;
+          write(list_s, buffer, sizeof(buffer));
+        }
       }
 
 }
