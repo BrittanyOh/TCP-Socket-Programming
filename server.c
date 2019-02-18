@@ -65,11 +65,14 @@ int main(){
           exit(EXIT_FAILURE);
         }
         else
-          printf("Server accept successful");
+          printf("Server accept successful \n");
 
           memset(buffer, 0, MAX_LINE);
           read(conn_s, buffer, sizeof(buffer));
-          printf("From client: %s", buffer);
+          if( *buffer =='s'){
+            printf("true \n");
+          }
+          printf("%s", buffer);
           memset(buffer, 0, MAX_LINE);
       }
 }

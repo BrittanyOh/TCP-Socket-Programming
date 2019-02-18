@@ -48,7 +48,7 @@ int main(){
 
       while (1){
         memset(buffer, 0, sizeof(buffer));
-        printf("Enter a string: ");
+        printf("Enter a s,f, or q: ");
         n = 0;
         while ((buffer[n++] = getchar()) != '\n')
             ;
