@@ -22,6 +22,7 @@ int main(){
   char buffer[MAX_LINE];
   char temp_buffer[MAX_LINE];
   int i = 0;
+  char n;
 
   // create and check listening Socket
   list_s = socket(AF_INET, SOCK_STREAM, 0);
@@ -77,11 +78,20 @@ int main(){
           if( strstr(temp_buffer, "CAP") != NULL){ //check if firsrt 3 chars include CAP
             memset(temp_buffer, 0, MAX_LINE);
             memcpy(temp_buffer, &buffer[5], 100 *sizeof(char));
-            while(temp_buffer[i]){ //capitilize each char in array
-              putchar (toupper(temp_buffer[i]));
+
+             //capitilize each char in array
+            while(temp_buffer[i]){
+              temp_buffer[i] = toupper(temp_buffer[i]);
               i++;
             }
-            printf("%s", temp_buffer);
+            i -= 1;
+            memset(buffer, 0, MAX_LINE);
+            sprintf(buffer,"%d", i);
+            strcat(buffer, "\\n");
+            strcat(buffer, temp_buffer);
+            write(conn_s, buffer, sizeof(buffer));
+            //printf("%d\n%s", i - 1, temp_buffer);
+
             memset(buffer, 0, MAX_LINE);
           }
           //quit program

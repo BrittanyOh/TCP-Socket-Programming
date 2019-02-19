@@ -64,6 +64,8 @@ int main(){
           strcat(temp_buffer, buffer);
           printf("Sending server: %s... \n", temp_buffer);
           write(list_s, temp_buffer, sizeof(buffer));
+          read(list_s, buffer, sizeof(buffer));
+          printf("%s", buffer);
         }
 
         /* FILE\nxxx\n */
