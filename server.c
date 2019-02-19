@@ -21,6 +21,7 @@ int main(){
   struct sockaddr_in cli_addr;
   char buffer[MAX_LINE];
   char temp_buffer[MAX_LINE];
+  int i = 0;
 
   // create and check listening Socket
   list_s = socket(AF_INET, SOCK_STREAM, 0);
@@ -74,7 +75,13 @@ int main(){
           // capitalized
           memcpy(temp_buffer, buffer, 3 * sizeof(char));
           if( strstr(temp_buffer, "CAP") != NULL){ //check if firsrt 3 chars include CAP
-            printf("%s", buffer);
+            memset(temp_buffer, 0, MAX_LINE);
+            memcpy(temp_buffer, &buffer[5], 100 *sizeof(char));
+            while(temp_buffer[i]){ //capitilize each char in array
+              putchar (toupper(temp_buffer[i]));
+              i++;
+            }
+            printf("%s", temp_buffer);
             memset(buffer, 0, MAX_LINE);
           }
           //quit program
