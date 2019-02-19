@@ -5,6 +5,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <ctype.h>
 
 /* Global constants */
 #define PORT 2002
@@ -23,6 +24,7 @@ int main(){
   char temp_buffer[MAX_LINE];
   int i = 0;
   char n;
+  FILE *fptr;
 
   // create and check listening Socket
   list_s = socket(AF_INET, SOCK_STREAM, 0);
@@ -73,11 +75,11 @@ int main(){
           memset(buffer, 0, MAX_LINE);
           read(conn_s, buffer, sizeof(buffer));
 
-          // capitalized
-          memcpy(temp_buffer, buffer, 3 * sizeof(char));
+          // check capitalized
+          memcpy(temp_buffer, buffer, 4 * sizeof(char));
           if( strstr(temp_buffer, "CAP") != NULL){ //check if firsrt 3 chars include CAP
             memset(temp_buffer, 0, MAX_LINE);
-            memcpy(temp_buffer, &buffer[5], 100 *sizeof(char));
+            memcpy(temp_buffer, &buffer[5], 100 *sizeof(char)); //grab chars after CAP\n
 
              //capitilize each char in array
             while(temp_buffer[i]){
@@ -94,6 +96,26 @@ int main(){
 
             memset(buffer, 0, MAX_LINE);
           }
+
+          if( strstr(temp_buffer, "FILE") != NULL){ //check if firsrt 4 chars include FILE
+            memset(temp_buffer, 0, MAX_LINE);
+            memcpy(temp_buffer, &buffer[6], 100 *sizeof(char)); //grab chars after FILE\n
+            memset(buffer, 0, MAX_LINE);
+
+            temp_buffer[strlen(temp_buffer)-1] = 0; //remove \n from end of file name
+
+            printf("Client is searching for file ''%s' ...\n", temp_buffer);
+            if ((fptr = fopen(temp_buffer, "r")) == NULL) {
+              perror("Error");
+              // Program exits if file pointer returns NULL.
+              exit(EXIT_FAILURE);
+            }
+
+            fscanf(fptr,"%[^\n]", buffer);
+            printf("Data from the file:\n%s", buffer);
+            fclose(fptr);
+          }
+
           //quit program
           if( *buffer == 'q'){
             break;
