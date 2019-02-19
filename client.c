@@ -63,7 +63,7 @@ int main(){
               ;
           strcat(temp_buffer, buffer);
           printf("Sending server: %s... \n", temp_buffer);
-          write(list_s, temp_buffer, sizeof(buffer));
+          write(list_s, temp_buffer, sizeof(temp_buffer));
           read(list_s, buffer, sizeof(buffer));
           printf("%s", buffer);
         }
@@ -72,6 +72,14 @@ int main(){
         if( *buffer == 'f'){
           memset(buffer, 0, sizeof(buffer));
           printf("Enter a string:");
+          n = 0;
+          while ((buffer[n++] = getchar()) != '\n')
+              ;
+          strcpy(temp_buffer, "FILE\\n");
+          strcat(temp_buffer, buffer);
+          printf("Sending server: %s... \n", temp_buffer);
+          write(list_s, temp_buffer, sizeof(temp_buffer));
+
         }
 
         //exit chat
